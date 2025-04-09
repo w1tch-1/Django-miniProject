@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<h1>💻 Курси з IT для всіх рівнів</h1>
+<h2>🚀 Почни кар'єру в IT вже сьогодні!</h2>
+
+<p>
+  Ця платформа створена для тих, хто мріє розпочати або продовжити свій шлях у світі інформаційних технологій. Ми спеціалізуємось на <strong>створенні відеоігор</strong>, поєднуючи теорію з максимальною кількістю практики.
+</p>
+
+<p>
+  На цій сторінці ти знайдеш сучасні та практичні курси, які охоплюють всі етапи створення гри — від базового програмування до розробки повноцінного геймплею.
+</p>
+
+<h2>📖 Що ми пропонуємо:</h2>
+<ul>
+  <li>Курси для початківців — не потрібні попередні знання.</li>
+  <li>Курси для просунутих — покращуй свої навички та портфоліо.</li>
+  <li>Практичні завдання після кожного модуля.</li>
+  <li>Підтримка менторів та спільнота однодумців.</li>
+</ul>
+
+<img src="{% static 'img/lesson.png' %}" alt="Приклад відеоуроку зі створення гри">
+
+<h2>🎯 Теми курсів:</h2>
+<ul>
+  <li>Створення 2D та 3D ігор (Unity, Godot, Unreal Engine)</li>
+  <li>Програмування для ігор (C#, Python, JavaScript)</li>
+  <li>Графіка та анімація — створення персонажів, рівнів, ефектів</li>
+  <li>AI в іграх — інтелект NPC, сценарії поведінки</li>
+  <li>Геймдизайн — як зробити гру цікавою та збалансованою</li>
+  <li>Розміщення гри онлайн — Steam, Itch.io, Play Market</li>
+</ul>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemCreateModal">
+  Order 1st lesson
+</button>
+
+<div class="modal fade" id="itemCreateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'create_order' %}" id="orderCreationForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+          </form>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/order-first-lesson.js' %}"></script>
+{% endblock %}
